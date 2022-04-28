@@ -15,8 +15,8 @@ class MemoListViewController: UIViewController, ViewModelBindableType {
     // MARK: Properties
     var viewModel: MemoListViewModel!
     
-    lazy var rightButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(rightButtonDidTapped))
+    lazy var addButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
         button.tintColor = .systemBlue
         return button
     }()
@@ -36,11 +36,6 @@ class MemoListViewController: UIViewController, ViewModelBindableType {
         listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
-    // MARK: Selector
-    @objc func rightButtonDidTapped() {
-        
-    }
-    
     // MARK: Helpers
     func bindViewModel() {
         viewModel.title
@@ -52,12 +47,13 @@ class MemoListViewController: UIViewController, ViewModelBindableType {
                 cell.textLabel?.text = memo.content
             }.disposed(by: rx.disposeBag)
         
+        addButton.rx.action = viewModel.makeCreateAction()
     }
     
     func navigationConfigure() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .white
-        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.rightBarButtonItem = addButton
     }
     
     func tableConfigure() {

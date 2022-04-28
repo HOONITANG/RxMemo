@@ -16,13 +16,11 @@ enum Scene {
 // 스토리보드를 생성하고, 연관되는 ViewModel을 바인딩해서
 // 리턴하는 작업을 함.
 extension Scene {
-    func instantiate(from controller: UIViewController) -> UIViewController {
+    func instantiate() -> UIViewController {
         switch self {
             
         case .list(let viewModel):
-            guard let nav = controller as? UINavigationController else {
-                fatalError()
-            }
+            let nav = UINavigationController(rootViewController: MemoListViewController())
             guard var listVC = nav.viewControllers.first as? MemoListViewController else {
                 fatalError()
             }
@@ -31,17 +29,12 @@ extension Scene {
             
             return nav
         case .detail(let viewModel):
-            guard var detailVC = controller as? MemoDetailViewController else {
-                fatalError()
-            }
-            
+            var detailVC = MemoDetailViewController()
             detailVC.bind(viewModel: viewModel)
             return detailVC
             
         case .compose(let viewModel):
-            guard let nav = controller as? UINavigationController else {
-                fatalError()
-            }
+            let nav = UINavigationController(rootViewController: MemoComposeViewController())
             guard var composeVC = nav.viewControllers.first as? MemoComposeViewController else {
                 fatalError()
             }

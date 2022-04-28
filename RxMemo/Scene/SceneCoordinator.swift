@@ -25,7 +25,7 @@ class SceneCoordinator: SceneCoordinatorType {
     func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
         // Completable을 대신하기 위해 사용.
         let subject = PublishSubject<Void>()
-        let target = scene.instantiate(from: UINavigationController(rootViewController: MemoListViewController()))
+        let target = scene.instantiate()  // scene에 해당하는 Controller를 반환해줌.
         
         switch style {
         case .root:

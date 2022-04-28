@@ -70,8 +70,8 @@ class MemoComposeViewController: UIViewController, ViewModelBindableType {
     func navigationConfigure() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backgroundColor = .white
-        navigationItem.rightBarButtonItem = cancelButton
-        navigationItem.leftBarButtonItem = saveButton
+        navigationItem.rightBarButtonItem = saveButton
+        navigationItem.leftBarButtonItem = cancelButton
     }
     
     func bindViewModel() {
