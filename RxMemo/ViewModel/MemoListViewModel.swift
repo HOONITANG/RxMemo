@@ -32,6 +32,8 @@ class MemoListViewModel: CommonViewModel {
         }
     }
     
+    // Observable MemoList에 메모를 추가함.
+    // 메모 추가화면을 위한 save,cancel Action을 파라미터로 전달하고, 메모 추가 화면을 띄움.
     func makeCreateAction() -> CocoaAction {
         return CocoaAction { _ in
             return self.storage.createMemo(content: "")

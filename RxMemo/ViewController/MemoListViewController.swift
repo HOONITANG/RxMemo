@@ -58,6 +58,5 @@ class MemoListViewController: UIViewController, ViewModelBindableType {
     
     func tableConfigure() {
         listTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
     }
 }
