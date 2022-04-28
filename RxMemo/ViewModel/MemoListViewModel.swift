@@ -6,7 +6,14 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class MemoListViewModel {
-    
+// 화면전환과 메모저장을 모두 처리함
+// 위의 작업을 위해, SceneCoordinator와 MemoStorage을 사용함
+// 생성자에서 의존성을 주입해줘야함.
+class MemoListViewModel: CommonViewModel {
+    var memoList: Observable<[Memo]> {
+        return storage.memoList()
+    }
 }
