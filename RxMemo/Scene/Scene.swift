@@ -16,7 +16,7 @@ enum Scene {
 // 스토리보드를 생성하고, 연관되는 ViewModel을 바인딩해서
 // 리턴하는 작업을 함.
 extension Scene {
-    func instantiate(from controller: UIViewController = MemoListViewController()) -> UIViewController {
+    func instantiate(from controller: UIViewController) -> UIViewController {
         switch self {
             
         case .list(let viewModel):
